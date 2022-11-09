@@ -26,7 +26,7 @@ export const ChatSettings: React.FC<ChatSettingsProps> = (
     props.isLoading || !chat
       ? ''
       : chat.is_direct_chat && otherPerson
-      ? otherPerson.person.username
+      ? [otherPerson.person.first_name, otherPerson.person.last_name].filter(item => item).join(' ')
       : chat.title;
 
   return (

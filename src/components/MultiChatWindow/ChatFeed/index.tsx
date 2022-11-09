@@ -43,7 +43,7 @@ export const ChatFeed: React.FC<ChatFeedProps> = (props: ChatFeedProps) => {
   ) : !chat ? (
     'Create a chat!'
   ) : chat.is_direct_chat && otherPerson ? (
-    otherPerson.person.username
+      [otherPerson.person.first_name, otherPerson.person.last_name].filter(item => item).join(' ')
   ) : (
     chat.title
   );
