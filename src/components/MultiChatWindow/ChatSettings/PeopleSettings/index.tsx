@@ -25,14 +25,14 @@ export const PeopleSettings: React.FC<PeopleSettingsProps> = (
           style={{ height: '52px', position: 'relative' }}
         >
           <Avatar
-            username={person.username}
+            username={[person.first_name, person.last_name].filter(item => item).join(' ')}
             avatarUrl={person.avatar}
             isOnline={person.is_online}
             style={{ ...styles.avatarStyle, ...props.avatarStyle }}
           />
 
           <div style={{ ...styles.usernameStyle, ...props.usernameStyle }}>
-            {person.username}
+            {[person.first_name, person.last_name].filter(item => item).join(' ')}
           </div>
 
           {props.canDelete && (

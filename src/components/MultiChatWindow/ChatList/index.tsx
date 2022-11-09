@@ -68,7 +68,7 @@ export const ChatList: React.FC<ChatListProps> = (props: ChatListProps) => {
           onClick={() =>
             props.onChatCardClick && props.onChatCardClick(chat.id)
           }
-          avatarUsername={chat.last_message.sender?.username}
+          avatarUsername={title}
           avatarUrl={
             chat.last_message.sender
               ? chat.last_message.sender.avatar

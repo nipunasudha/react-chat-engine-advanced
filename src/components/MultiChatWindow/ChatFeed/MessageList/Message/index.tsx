@@ -24,7 +24,7 @@ export const Message: React.FC<MessageProps> = (props: MessageProps) => {
     isMyMessage = false,
     showDateTime = false,
   } = props;
-
+  const senderName = [message?.sender?.first_name, message?.sender?.last_name].filter(item => item).join(' ') || message.sender_username;
   const [hovered, setHovered] = useState<boolean>(false);
 
   const styles = isMyMessage ? myStyles : theirStyles;
@@ -153,7 +153,7 @@ export const Message: React.FC<MessageProps> = (props: MessageProps) => {
             isMyMessage ? 'my' : 'their'
           }-message-sender-username`}
         >
-          {message.sender_username}
+          {senderName}
         </div>
       )}
 
@@ -238,7 +238,7 @@ export const Message: React.FC<MessageProps> = (props: MessageProps) => {
           )}
 
           <Avatar
-            username={message.sender_username}
+            username={[message.sender?.first_name, message.sender?.last_name].filter(item => item).join(' ') || message.sender_username}
             style={{
               ...styles.avatarStyle,
               ...(isLastMessage ? {} : { display: 'none' }),

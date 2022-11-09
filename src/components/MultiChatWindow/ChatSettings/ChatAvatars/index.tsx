@@ -49,7 +49,7 @@ export const ChatAvatars: React.FC<ChatAvatarsProps> = (
     >
       <Avatar
         className="ce-chat-avatar-1"
-        username={topPeople[0] ? topPeople[0].username : undefined}
+        username={topPeople[0] ? [topPeople[0].first_name, topPeople[0].last_name].filter(item => item).join(' ') : undefined}
         avatarUrl={topPeople[0] ? topPeople[0].avatar : undefined}
         style={{
           ...style.avatarOne,
@@ -60,7 +60,7 @@ export const ChatAvatars: React.FC<ChatAvatarsProps> = (
 
       <Avatar
         className="ce-chat-avatar-2"
-        username={topPeople[1] ? topPeople[1].username : undefined}
+        username={topPeople[1] ? [topPeople[1].first_name, topPeople[1].last_name].filter(item => item).join(' ') : undefined}
         avatarUrl={topPeople[1] ? topPeople[1].avatar : undefined}
         style={{
           ...style.avatarTwo,
@@ -71,7 +71,7 @@ export const ChatAvatars: React.FC<ChatAvatarsProps> = (
 
       <Avatar
         className="ce-chat-avatar-3"
-        username={topPeople[2] ? topPeople[2].username : undefined}
+        username={topPeople[2] ? [topPeople[2].first_name, topPeople[2].last_name].filter(item => item).join(' ') : undefined}
         avatarUrl={topPeople[2] ? topPeople[2].avatar : undefined}
         style={{
           ...style.avatarThree,
