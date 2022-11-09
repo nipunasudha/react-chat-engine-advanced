@@ -47,7 +47,7 @@ export const ChatList: React.FC<ChatListProps> = (props: ChatListProps) => {
       const title = !chat
         ? ''
         : chat.is_direct_chat && otherPerson
-        ? otherPerson.person.username
+        ? [otherPerson.person.first_name, otherPerson.person.last_name].filter(item => item).join(' ')
         : chat.title;
       const timeStamp = getDateTime(chat.created, props.timezoneOffset)
         .toString()
