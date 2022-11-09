@@ -68,6 +68,7 @@ export const useMultiChatLogic = (
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
   const [hasMoreMessages, setHasMoreMessages] = useState<boolean>(false);
   const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
+  const [isAutoScrollToBottom, setIsAutoScrollToBottom] = useState<boolean>(false);
   const [isChatListLoading, setIsChatListLoading] = useState<boolean>(true);
   const [isChatFeedLoading, setIsChatFeedLoading] = useState<boolean>(true);
   const [isChatSettingsLoading, setIsChatSettingsLoading] =
@@ -195,7 +196,7 @@ export const useMultiChatLogic = (
       const sortedMessages = sortMessages(newMessages);
 
       setMessages(sortedMessages);
-      if (isChatFeedAtBottom) {
+      if (isChatFeedAtBottom && isAutoScrollToBottom) {
         animateScroll.scrollToBottom({
           duration: 333,
           containerId: `ce-message-list-${activeChatId}`,
@@ -262,7 +263,7 @@ export const useMultiChatLogic = (
         setIsChatFeedLoading(false);
         setIsChatSettingsLoading(false);
 
-        animateScroll.scrollToBottom({
+        if(isAutoScrollToBottom) animateScroll.scrollToBottom({
           duration: 0,
           containerId: `ce-message-list-${activeChatId}`,
         });
@@ -350,7 +351,7 @@ export const useMultiChatLogic = (
         (chatId, messages) => {
           onGetMessages(chatId, messages);
 
-          setTimeout(() => {
+          if(isAutoScrollToBottom) setTimeout(() => {
             const element = document.getElementById(messageListId);
             if (element) {
               animateScroll.scrollTo(element.clientHeight - currentHeight, {
@@ -425,6 +426,8 @@ export const useMultiChatLogic = (
     setHasMoreMessages,
     isChatFeedAtBottom,
     setIsChatFeedAtBottom,
+    isAutoScrollToBottom,
+    setIsAutoScrollToBottom,
     isChatListLoading,
     setIsChatListLoading,
     isChatFeedLoading,

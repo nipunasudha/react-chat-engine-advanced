@@ -6,3 +6,4 @@ dist
 .dccache
 
 example/src/consts.js
+.idea/
